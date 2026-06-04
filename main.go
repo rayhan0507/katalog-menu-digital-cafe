@@ -91,39 +91,40 @@ func urutkanHarga(arr *tabKopi, N int) {
 }
 
 func cariNama(T tabKopi, N int, target string) {
+	var i int
+	for i = 0; i < N; i++ {
+		if T[i].namaMinuman == target {
+			fmt.Printf("%s - Rp%d\n", T[i].namaMinuman, T[i].harga)
+		}
+	}
+}
+
+func cariHarga(T tabKopi, N int, t int) {
 	var l, r, mid int
 	l = 0
 	r = N - 1
 	mid = (l + r) / 2
 
 	for l <= r {
-		if T[mid].namaMinuman == target {
-			fmt.Printf("Minuman ditemukan: %s - Rp%d\n", T[mid].namaMinuman, T[mid].harga)
+		if T[mid].harga == t {
+			fmt.Printf("harga Minuman ditemukan: %s - Rp%d\n", T[mid].namaMinuman, T[mid].harga)
 			return
-		} else if T[mid].namaMinuman < target {
+		} else if T[mid].harga < t {
 			l = mid + 1
 		} else {
 			r = mid - 1
 		}
 		mid = (l + r) / 2
 	}
-	fmt.Println("Minuman tidak ditemukan")
-}
-
-func cariHarga(T tabKopi, N int, t int) {
-	var i int
-	for i = 0; i < N; i++ {
-		if T[i].harga == t {
-			fmt.Printf("%s - Rp%d\n", T[i].namaMinuman, T[i].harga)
-		}
-	}
+	fmt.Println(" Harga minuman tidak ditemukan")
 }
 
 func main() {
 	var n, pilih, fitur int
 	var jumlahKopi, jumlahNonkopi int
 	var arr tabKopi
-	fmt.Print("fitur:\n1.`Beli menu\n2. cari berdasarkan nama \n3. cari berdasarkan harga\n4. urutkan harga termurah\n5. Update Menu\n6.Hapus Menu\n Pilih fitur yang ingin anda gunakan:(1-6)\n")
+	fmt.Print("fitur:\n1. Beli menu\n2. cari berdasarkan nama \n3. cari berdasarkan harga\n4. urutkan harga termurah\n5. Update Menu\n6.Hapus Menu\n Pilih fitur yang ingin anda gunakan:(1-6)\n")
+	fmt.Scanln(&fitur)
 	if fitur == 1 {
 		fmt.Print("Menu cafe kami:")
 		fmt.Print("\n1. Kopi\n2. Non-Kopi\nPilih menu yang ingin anda lihat:\n")
