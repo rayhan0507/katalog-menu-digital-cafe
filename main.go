@@ -123,7 +123,7 @@ func main() {
 	var n, pilih, fitur int
 	var jumlahKopi, jumlahNonkopi int
 	var arr tabKopi
-	fmt.Print("fitur: 1.Beli menu\n2. cari berdasarkan nama \n3. cari berdasarkan harga\n4. urutkan harga termurah\n5. Update Menu\n6.Hapus Menu\n Pilih fitur yang ingin anda gunakan:(1-6)\n")
+	fmt.Print("fitur:\n 1.`Beli menu\n2. cari berdasarkan nama \n3. cari berdasarkan harga\n4. urutkan harga termurah\n5. Update Menu\n6.Hapus Menu\n Pilih fitur yang ingin anda gunakan:(1-6)\n")
 	if fitur == 1 {
 		fmt.Print("Menu cafe kami:")
 		fmt.Print("\n1. Kopi\n2. Non-Kopi\nPilih menu yang ingin anda lihat:\n")
