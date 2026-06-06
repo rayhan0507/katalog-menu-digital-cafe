@@ -61,7 +61,6 @@ func init() {
 	nonKopi[19] = katalogKopi{"Mineral Water", 10000, 40, true}
 }
 
-// Menampilkan seluruh menu berdasarkan kategori
 func tampilMenu(arr tabKopi, N int, kategori string) {
 	var i int
 	fmt.Printf("Menu %s:\n", kategori)
@@ -70,7 +69,6 @@ func tampilMenu(arr tabKopi, N int, kategori string) {
 	}
 }
 
-// Mengurutkan menu berdasarkan harga termurah (insertion sort)
 func urutkanHarga(arr *tabKopi, N int) {
 	var i, j int
 	var key katalogKopi
@@ -85,7 +83,6 @@ func urutkanHarga(arr *tabKopi, N int) {
 	}
 }
 
-// Mencari minuman berdasarkan nama di salah satu kategori (sequential search)
 func cariNama(arr tabKopi, N int, target string) {
 	var i int
 	var ditemukan bool
@@ -101,7 +98,6 @@ func cariNama(arr tabKopi, N int, target string) {
 	}
 }
 
-// Mencari minuman berdasarkan harga (binary search, array harus sudah diurutkan)
 func cariHarga(arr tabKopi, N int, target int) {
 	var l, r, mid int
 	l = 0
@@ -120,7 +116,6 @@ func cariHarga(arr tabKopi, N int, target int) {
 	fmt.Println("Minuman dengan harga tersebut tidak ditemukan.")
 }
 
-// Menampilkan menu yang tersedia (tersedia == true)
 func tampilTersedia(arr tabKopi, N int, kategori string) {
 	var i int
 	var ada bool
@@ -137,7 +132,6 @@ func tampilTersedia(arr tabKopi, N int, kategori string) {
 	}
 }
 
-// Mengubah status ketersediaan minuman berdasarkan ID
 func updateKetersediaan(arr *tabKopi, N int, id int, status bool) {
 	var i int
 	for i = 0; i < N; i++ {
