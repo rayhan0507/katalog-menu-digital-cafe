@@ -11,7 +11,6 @@ type katalogKopi struct {
 }
 
 type tabKopi [NMAX]katalogKopi
-type keranjang [NMAX]katalogKopi
 
 var kopi tabKopi
 var nonKopi tabKopi
@@ -62,42 +61,9 @@ func init() {
 	nonKopi[19] = katalogKopi{"Mineral Water", 10000, 40, true}
 }
 
-func inputKopiByID(T *keranjang, jumlah int, katalog tabKopi, nKatalog int) {
-	var i, id int
-	i = 0
-	for i < jumlah {
-		fmt.Printf("Masukkan ID minuman ke-%d: ", i+1)
-		fmt.Scan(&id)
-		var j int
-		var ditemukan bool
-		ditemukan = false
-		for j = 0; j < nKatalog; j++ {
-			if katalog[j].id == id {
-				T[i] = katalog[j]
-				fmt.Printf("Ditambahkan: %s\n", katalog[j].namaMinuman)
-				ditemukan = true
-				break
-			}
-		}
-		if !ditemukan {
-			fmt.Println("ID tidak ditemukan, coba lagi!")
-		} else {
-			i++
-		}
-	}
-}
-
-func tampilMenuKopi(arr tabKopi, N int) {
+func tampilMenu(arr tabKopi, N int, kategori string) {
 	var i int
-	fmt.Println("Menu Kopi:")
-	for i = 0; i < N; i++ {
-		fmt.Printf("%d. %s - Rp%d\n", arr[i].id, arr[i].namaMinuman, arr[i].harga)
-	}
-}
-
-func tampilMenuNonKopi(arr tabKopi, N int) {
-	var i int
-	fmt.Println("Menu Non Kopi:")
+	fmt.Printf("Menu %s:\n", kategori)
 	for i = 0; i < N; i++ {
 		fmt.Printf("%d. %s - Rp%d\n", arr[i].id, arr[i].namaMinuman, arr[i].harga)
 	}
@@ -117,108 +83,36 @@ func urutkanHarga(arr *tabKopi, N int) {
 	}
 }
 
-func cariNama(T tabKopi, N int, target string) {
-	var i int
-	var ditemukan bool
-	ditemukan = false
-	for i = 0; i < N; i++ {
-		if T[i].namaMinuman == target {
-			fmt.Printf("Ditemukan: %s - Rp%d\n", T[i].namaMinuman, T[i].harga)
-			ditemukan = true
-		}
-	}
-	if !ditemukan {
-		fmt.Println("Minuman tidak ditemukan")
-	}
-}
-
-func cariHarga(T tabKopi, N int, t int) {
-	var l, r, mid int
-	l = 0
-	r = N - 1
-	mid = (l + r) / 2
-
-	for l <= r {
-		if T[mid].harga == t {
-			fmt.Printf("Harga minuman ditemukan: %s - Rp%d\n", T[mid].namaMinuman, T[mid].harga)
-			return
-		} else if T[mid].harga < t {
-			l = mid + 1
-		} else {
-			r = mid - 1
-		}
-		mid = (l + r) / 2
-	}
-	fmt.Println("Harga minuman tidak ditemukan")
-}
-
-func tampilKeranjang(T keranjang, N int) {
-	var i int
-	var total int
-	fmt.Println("=== Keranjang Belanja ===")
-	for i = 0; i < N; i++ {
-		fmt.Printf("%s - Rp%d\n", T[i].namaMinuman, T[i].harga)
-		total += T[i].harga
-	}
-	fmt.Printf("Total: Rp%d\n", total)
-}
-
 func main() {
-	var pilih, fitur int
-	var jumlahBeli int
-	var arr keranjang
-	var nKeranjang int
+	var fitur, pilih int
 
-	for fitur != 7 {
-		fmt.Print("\nFitur:\n1. Beli menu\n2. Cari berdasarkan nama\n3. Cari berdasarkan harga\n4. Urutkan harga termurah\n5. Lihat keranjang\n6. Hapus Menu\n7. Keluar\nPilih fitur (1-7): ")
+	for fitur != 3 {
+		fmt.Print("\nFitur:\n1. Cari menu berdasarkan kategori\n2. Urutkan harga termurah\n3. Keluar\nPilih fitur (1-3): ")
 		fmt.Scanln(&fitur)
 
 		if fitur == 1 {
-			fmt.Print("\n1. Kopi\n2. Non-Kopi\nPilih kategori: ")
+			fmt.Print("Pilih kategori:\n1. Kopi\n2. Non-Kopi\nPilihan: ")
 			fmt.Scanln(&pilih)
-
-			switch pilih {
-			case 1:
-				tampilMenuKopi(kopi, jumlahKopi)
-				fmt.Print("Masukan jumlah kopi yang mau anda beli: ")
-				fmt.Scan(&jumlahBeli)
-				inputKopiByID(&arr, jumlahBeli, kopi, jumlahKopi)
-				nKeranjang += jumlahBeli
-
-			case 2:
-				tampilMenuNonKopi(nonKopi, jumlahNonKopi)
-				fmt.Print("Masukan jumlah non-kopi yang mau anda beli: ")
-				fmt.Scan(&jumlahBeli)
-				inputKopiByID(&arr, jumlahBeli, nonKopi, jumlahNonKopi)
-				nKeranjang += jumlahBeli
-
-			default:
+			if pilih == 1 {
+				tampilMenu(kopi, jumlahKopi, "Kopi")
+			} else if pilih == 2 {
+				tampilMenu(nonKopi, jumlahNonKopi, "Non-Kopi")
+			} else {
 				fmt.Println("Pilihan tidak valid")
 			}
 
 		} else if fitur == 2 {
-			var target string
-			fmt.Print("Masukan nama minuman yang ingin anda cari: ")
-			fmt.Scan(&target)
-			cariNama(kopi, jumlahKopi, target)
-			cariNama(nonKopi, jumlahNonKopi, target)
-
-		} else if fitur == 3 {
-			var targetHarga int
-			fmt.Print("Masukan harga minuman yang ingin anda cari: ")
-			fmt.Scan(&targetHarga)
-			cariHarga(kopi, jumlahKopi, targetHarga)
-			cariHarga(nonKopi, jumlahNonKopi, targetHarga)
-
-		} else if fitur == 4 {
-			urutkanHarga(&kopi, jumlahKopi)
-			urutkanHarga(&nonKopi, jumlahNonKopi)
-			fmt.Print("Menu setelah diurutkan berdasarkan harga termurah:\n")
-			tampilMenuKopi(kopi, jumlahKopi)
-			tampilMenuNonKopi(nonKopi, jumlahNonKopi)
-
-		} else if fitur == 5 {
-			tampilKeranjang(arr, nKeranjang)
+			fmt.Print("Pilih kategori yang ingin diurutkan:\n1. Kopi\n2. Non-Kopi\nPilihan: ")
+			fmt.Scanln(&pilih)
+			if pilih == 1 {
+				urutkanHarga(&kopi, jumlahKopi)
+				tampilMenu(kopi, jumlahKopi, "Kopi (Termurah)")
+			} else if pilih == 2 {
+				urutkanHarga(&nonKopi, jumlahNonKopi)
+				tampilMenu(nonKopi, jumlahNonKopi, "Non-Kopi (Termurah)")
+			} else {
+				fmt.Println("Pilihan tidak valid")
+			}
 		}
 	}
 	fmt.Println("Terima kasih!")
