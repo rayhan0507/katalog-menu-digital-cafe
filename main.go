@@ -12,11 +12,6 @@ type katalogKopi struct {
 
 type tabKopi [NMAX]katalogKopi
 
-var kopi tabKopi
-var nonKopi tabKopi
-var jumlahKopi int = 20
-var jumlahNonKopi int = 20
-
 func init() {
 	kopi[0] = katalogKopi{"Americano", 20000, 1, true}
 	kopi[1] = katalogKopi{"Espresso", 18000, 2, true}
@@ -132,21 +127,10 @@ func tampilTersedia(arr tabKopi, N int, kategori string) {
 	}
 }
 
-func updateKetersediaan(arr *tabKopi, N int, id int, status bool) {
-	var i int
-	for i = 0; i < N; i++ {
-		if (*arr)[i].id == id {
-			(*arr)[i].tersedia = status
-			if status {
-				fmt.Printf("%s sekarang tersedia.\n", (*arr)[i].namaMinuman)
-			} else {
-				fmt.Printf("%s sekarang tidak tersedia.\n", (*arr)[i].namaMinuman)
-			}
-			return
-		}
-	}
-	fmt.Println("ID tidak ditemukan.")
-}
+var kopi tabKopi
+var nonKopi tabKopi
+var jumlahKopi int = 20
+var jumlahNonKopi int = 20
 
 func main() {
 	var fitur, pilih int
