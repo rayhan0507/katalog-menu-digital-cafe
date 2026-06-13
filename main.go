@@ -135,8 +135,8 @@ var jumlahNonKopi int = 20
 func main() {
 	var fitur, pilih int
 
-	for fitur != 6 {
-		fmt.Print("\nFitur:\n1. Lihat menu tersedia \n2. Urutkan harga termurah\n3. Cari minuman berdasarkan nama\n4. Cari minuman berdasarkan harga\n6. Keluar\nPilih fitur (1-6): ")
+	for fitur != 5 {
+		fmt.Print("\nFitur:\n1. Lihat menu tersedia \n2. Urutkan harga termurah\n3. Cari minuman berdasarkan nama\n4. Cari minuman berdasarkan harga\n5. Keluar\nPilih fitur (1-5): ")
 		fmt.Scanln(&fitur)
 
 		if fitur == 1 {
