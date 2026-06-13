@@ -152,16 +152,16 @@ func main() {
 	var fitur, pilih int
 
 	for fitur != 6 {
-		fmt.Print("\nFitur:\n1. Lihat menu berdasarkan kategori\n2. Urutkan harga termurah\n3. Cari minuman berdasarkan nama\n4. Cari minuman berdasarkan harga\n5. Lihat menu tersedia\n6. Keluar\nPilih fitur (1-6): ")
+		fmt.Print("\nFitur:\n1. Lihat menu tersedia \n2. Urutkan harga termurah\n3. Cari minuman berdasarkan nama\n4. Cari minuman berdasarkan harga\n6. Keluar\nPilih fitur (1-6): ")
 		fmt.Scanln(&fitur)
 
 		if fitur == 1 {
 			fmt.Print("Pilih kategori:\n1. Kopi\n2. Non-Kopi\nPilihan: ")
 			fmt.Scanln(&pilih)
 			if pilih == 1 {
-				tampilMenu(kopi, jumlahKopi, "Kopi")
+				tampilTersedia(kopi, jumlahKopi, "Kopi")
 			} else if pilih == 2 {
-				tampilMenu(nonKopi, jumlahNonKopi, "Non-Kopi")
+				tampilTersedia(nonKopi, jumlahNonKopi, "Non-Kopi")
 			} else {
 				fmt.Println("Pilihan tidak valid.")
 			}
@@ -209,16 +209,6 @@ func main() {
 				fmt.Println("Pilihan tidak valid.")
 			}
 
-		} else if fitur == 5 {
-			fmt.Print("Pilih kategori:\n1. Kopi\n2. Non-Kopi\nPilihan: ")
-			fmt.Scanln(&pilih)
-			if pilih == 1 {
-				tampilTersedia(kopi, jumlahKopi, "Kopi")
-			} else if pilih == 2 {
-				tampilTersedia(nonKopi, jumlahNonKopi, "Non-Kopi")
-			} else {
-				fmt.Println("Pilihan tidak valid.")
-			}
 		}
 	}
 	fmt.Println("Terima kasih!")
