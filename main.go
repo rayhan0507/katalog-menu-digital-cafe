@@ -194,6 +194,8 @@ func main() {
 			}
 
 		}
+		pilih = 0
+		fitur = 0
 	}
 	fmt.Println("Terima kasih!")
 }
