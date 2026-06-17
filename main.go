@@ -153,6 +153,8 @@ func main() {
 		} else if fitur == 2 {
 			fmt.Print("Pilih kategori:\n1. Kopi\n2. Non-Kopi\nPilihan: ")
 			fmt.Scanln(&pilih)
+
+			// pilih kategori
 			if pilih == 1 {
 				urutkanHarga(&kopi, jumlahKopi)
 				tampilMenu(kopi, jumlahKopi, "Kopi (Termurah)")
@@ -168,7 +170,9 @@ func main() {
 			fmt.Print("Pilih kategori:\n1. Kopi\n2. Non-Kopi\nPilihan: ")
 			fmt.Scanln(&pilih)
 			fmt.Print("Masukkan nama minuman: ")
-			fmt.Scan(&target)
+			fmt.Scanln(&target)
+
+			// pilih kategori
 			if pilih == 1 {
 				cariNama(kopi, jumlahKopi, target)
 			} else if pilih == 2 {
@@ -182,7 +186,7 @@ func main() {
 			fmt.Print("Pilih kategori:\n1. Kopi\n2. Non-Kopi\nPilihan: ")
 			fmt.Scanln(&pilih)
 			fmt.Print("Masukkan harga yang dicari: Rp")
-			fmt.Scan(&targetHarga)
+			fmt.Scanln(&targetHarga)
 			if pilih == 1 {
 				urutkanHarga(&kopi, jumlahKopi)
 				cariHarga(kopi, jumlahKopi, targetHarga)
@@ -194,8 +198,6 @@ func main() {
 			}
 
 		}
-		pilih = 0
-		fitur = 0
 	}
 	fmt.Println("Terima kasih!")
 }
