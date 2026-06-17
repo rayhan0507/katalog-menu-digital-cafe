@@ -55,6 +55,7 @@ func urutkanNama(arr *tabKopi, N int) {
 	}
 }
 
+// buat ngurutin harga minuman
 func urutkanHarga(arr *tabKopi, N int) {
 	var i, j int
 	var key katalogKopi
@@ -69,7 +70,7 @@ func urutkanHarga(arr *tabKopi, N int) {
 	}
 }
 
-// Fungsi untuk mengembalikan urutan berdasarkan ID asli menu
+// buat ngurutin ID
 func urutkanID(arr *tabKopi, N int) {
 	var i, j int
 	var key katalogKopi
@@ -84,6 +85,7 @@ func urutkanID(arr *tabKopi, N int) {
 	}
 }
 
+// nyari nama minuman
 func cariNama(arr tabKopi, N int, target string) {
 	var l, r, mid int
 	l = 0
@@ -103,6 +105,7 @@ func cariNama(arr tabKopi, N int, target string) {
 	fmt.Println("Minuman tidak ditemukan.")
 }
 
+// nyari minuman berdasarkan harga
 func cariHarga(arr tabKopi, N int, target int) {
 	var i int
 	var ditemukan bool
