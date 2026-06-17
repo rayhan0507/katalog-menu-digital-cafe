@@ -56,14 +56,6 @@ func init() {
 	nonKopi[19] = katalogKopi{"Mineral Water", 10000, 40, true}
 }
 
-func tampilMenu(arr tabKopi, N int, kategori string) {
-	var i int
-	fmt.Printf("Menu %s:\n", kategori)
-	for i = 0; i < N; i++ {
-		fmt.Printf("%d. %s - Rp%d\n", arr[i].id, arr[i].namaMinuman, arr[i].harga)
-	}
-}
-
 func urutkanHarga(arr *tabKopi, N int) {
 	var i, j int
 	var key katalogKopi
@@ -157,10 +149,10 @@ func main() {
 			// pilih kategori
 			if pilih == 1 {
 				urutkanHarga(&kopi, jumlahKopi)
-				tampilMenu(kopi, jumlahKopi, "Kopi (Termurah)")
+				tampilTersedia(kopi, jumlahKopi, "Kopi")
 			} else if pilih == 2 {
 				urutkanHarga(&nonKopi, jumlahNonKopi)
-				tampilMenu(nonKopi, jumlahNonKopi, "Non-Kopi (Termurah)")
+				tampilTersedia(nonKopi, jumlahNonKopi, "Non-Kopi")
 			} else {
 				fmt.Println("Pilihan tidak valid.")
 			}
