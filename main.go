@@ -70,6 +70,21 @@ func urutkanHarga(arr *tabKopi, N int) {
 	}
 }
 
+// Fungsi untuk mengembalikan urutan berdasarkan ID asli menu
+func urutkanID(arr *tabKopi, N int) {
+	var i, j int
+	var key katalogKopi
+	for i = 1; i < N; i++ {
+		key = (*arr)[i]
+		j = i - 1
+		for j >= 0 && (*arr)[j].id > key.id {
+			(*arr)[j+1] = (*arr)[j]
+			j--
+		}
+		(*arr)[j+1] = key
+	}
+}
+
 func cariNama(arr tabKopi, N int, target string) {
 	var i int
 	var ditemukan bool
@@ -135,8 +150,12 @@ func main() {
 			fmt.Print("Pilih kategori:\n1. Kopi\n2. Non-Kopi\nPilihan: ")
 			fmt.Scanln(&pilih)
 			if pilih == 1 {
+				// Kembalikan ke urutan ID asli sebelum ditampilkan
+				urutkanID(&kopi, jumlahKopi)
 				tampilTersedia(kopi, jumlahKopi, "Kopi")
 			} else if pilih == 2 {
+				// Kembalikan ke urutan ID asli sebelum ditampilkan
+				urutkanID(&nonKopi, jumlahNonKopi)
 				tampilTersedia(nonKopi, jumlahNonKopi, "Non-Kopi")
 			} else {
 				fmt.Println("Pilihan tidak valid.")
@@ -146,7 +165,6 @@ func main() {
 			fmt.Print("Pilih kategori:\n1. Kopi\n2. Non-Kopi\nPilihan: ")
 			fmt.Scanln(&pilih)
 
-			// pilih kategori
 			if pilih == 1 {
 				urutkanHarga(&kopi, jumlahKopi)
 				tampilTersedia(kopi, jumlahKopi, "Kopi")
@@ -164,7 +182,6 @@ func main() {
 			fmt.Print("Masukkan nama minuman: ")
 			fmt.Scanln(&target)
 
-			// pilih kategori
 			if pilih == 1 {
 				cariNama(kopi, jumlahKopi, target)
 			} else if pilih == 2 {
