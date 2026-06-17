@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-const NMAX = 99
+const NMAX = 11
 
 type katalogKopi struct {
 	namaMinuman string
@@ -139,8 +139,8 @@ func tampilTersedia(arr tabKopi, N int, kategori string) {
 
 var kopi tabKopi
 var nonKopi tabKopi
-var jumlahKopi int = 20
-var jumlahNonKopi int = 20
+var jumlahKopi int = 11
+var jumlahNonKopi int = 11
 
 func main() {
 	var fitur, pilih int
