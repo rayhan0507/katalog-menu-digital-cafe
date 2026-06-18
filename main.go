@@ -39,6 +39,22 @@ func init() {
 
 }
 
+func tampilTersedia(arr tabKopi, N int, kategori string) {
+	var i int
+	var ada bool
+	ada = false
+	fmt.Printf("Menu %s yang tersedia:\n", kategori)
+	for i = 0; i < N; i++ {
+		if arr[i].tersedia {
+			fmt.Printf("%d. %s - Rp%d\n", arr[i].id, arr[i].namaMinuman, arr[i].harga)
+			ada = true
+		}
+	}
+	if !ada {
+		fmt.Println("Tidak ada menu yang tersedia.")
+	}
+}
+
 func urutkanNama(arr *tabKopi, N int) {
 	var i, j, minIndex int
 	var temp katalogKopi
@@ -118,22 +134,6 @@ func cariHarga(arr tabKopi, N int, target int) {
 	}
 	if !ditemukan {
 		fmt.Println("Minuman tidak ditemukan.")
-	}
-}
-
-func tampilTersedia(arr tabKopi, N int, kategori string) {
-	var i int
-	var ada bool
-	ada = false
-	fmt.Printf("Menu %s yang tersedia:\n", kategori)
-	for i = 0; i < N; i++ {
-		if arr[i].tersedia {
-			fmt.Printf("%d. %s - Rp%d\n", arr[i].id, arr[i].namaMinuman, arr[i].harga)
-			ada = true
-		}
-	}
-	if !ada {
-		fmt.Println("Tidak ada menu yang tersedia.")
 	}
 }
 
